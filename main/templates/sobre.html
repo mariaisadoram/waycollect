@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Sobre nós
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block nav %}
+
+<li class="nav-item ">
+    <a class="nav-link" href="{% url 'index' %}">Página Inicial</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'pontos' %}">Pontos de coleta</a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'sobre' %}">Sobre Nós</a>
+</li>
+
+{% endblock %}
+
+{% block h2 %}
+Sobre nós
+{% endblock %}
+
+{% block main %}
+{% endblock %}

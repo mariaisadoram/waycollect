@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+Mais informações
+{% block head %}
+{% endblock %}
+
+{% block nav %}
+
+<li class="nav-item ">
+    <a class="nav-link" href="{% url 'index' %}">Página Inicial</a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'pontos' %}">Pontos de coleta</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'sobre' %}">Sobre Nós</a>
+</li>
+
+{% endblock %}
+
+{% block h2 %}
+Mais detalhes
+{% endblock %}
+
+{% block main %}
+<hr style="margin-top: 30px; background-color: #28a74566;">
+<section class="flex container info-top">
+    <div class="img-loja">
+        <img src="/media/{{ local.imagem }}" alt="" style="width: 400px; height: 300px;">
+    </div>
+    <div style="margin-left: 10px; width: 50%;">
+        <h3 style="font-size: 35px;">
+            {{ local.nome_local }}
+        </h3>
+        <div>
+            <p style="color: #28a745; font-weight: bold;">{{ local.cidade }}-{{ local.uf }}</p>
+            <p>{{ local.disponibilidade }}</p>
+        </div>
+    </div>
+</section>
+<hr style="margin-top: 40px; background-color: #28a74566;">
+<section class="flex info-bottom container">
+    <section>
+        <p class="topico">Endereço:</p>
+        <p>
+            {{ local.rua }}<spam>, nº </spam>{{ local.num_residencial }}
+        </p>
+        <p>Bairro: {{ local.bairro }}</p>
+        <p>CEP: {{ local.cep }}</p>
+        <p>{{ local.cidade }}-{{ local.uf }}</p>
+    </section>
+    <section>
+        <p class="topico">Informações para contato:</p>
+        <p>Telefone: {{ local.fone }}</p>
+        <p>Email: {{ local.email }}</p>
+        <p>Responsável: {{ local.nome_responsavel }}</p>
+    </section>
+</section>
+
+{% endblock %}

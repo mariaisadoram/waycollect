@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg  ">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'img/logo-nav.png' %}" alt="logo" width="189" height="38">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav mr-auto">
+                    {% block nav %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Página Inicial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pontos' %}">Pontos de coleta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'sobre' %}">Sobre Nós</a>
+                    </li>
+
+                    {% endblock %}
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="O que você busca?"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+
+        <div class="titulo">
+            <h2>
+                {% block h2 %}
+                {% endblock %}
+            </h2>
+
+        </div>
+        {% block main %}
+        {% endblock %}
+
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="">
+                <a class="img-footer" href="{% url 'index' %}">
+                    <img src="{% static 'img/logo-footer.png' %}" alt="logo" width="100" height="100">
+                </a>
+            </div>
+            <div class="">
+                <p class="text-footer">Pau dos Ferros - RN, Brasil.</p>
+            </div>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col suport-colums">
+                        <strong>Nos conheça</strong>
+                        <a href="{% url 'sobre' %}">Sobre nós</a>
+                    </div>
+                    <div class="col suport-colums">
+                        <strong>Suporte</strong>
+                        <a href="">Política de privacidade</a>
+                    </div>
+                    <div class="col">
+                        <strong>Siga-nos</strong>
+                        <div class="social-media">
+                            <a class="social-media-item" href="#">
+                                <img src="{% static 'img/insta-white.png' %}" alt="instagram" width="20" height="20">
+                            </a>
+                            <a class="social-media-item" href="#">
+                                <img src="{% static 'img/wpp-white.png' %}" alt="whatsapp" width="27" height="27">
+                            </a>
+                            <a class="social-media-item" href="#">
+                                <img src="{% static 'img/email-white.png' %}" alt="email" width="24" height="22">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </footer>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Pontos de coleta
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block nav %}
+
+<li class="nav-item ">
+    <a class="nav-link" href="{% url 'index' %}">Página Inicial</a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'pontos' %}">Pontos de coleta</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'sobre' %}">Sobre Nós</a>
+</li>
+
+{% endblock %}
+
+{% block h2 %}
+Pontos de coleta
+{% endblock %}
+
+{% block main %}
+
+<div>
+    <a href="{% url 'cadastro_ponto' %}">
+        <p style="   
+    display: flex;
+    justify-content: center;
+    color: #007bff;
+    text-decoration: underline;">
+            + Adicionar um ponto
+        </p>
+    </a>
+</div>
+
+<section class="container locals" style="padding-top: 40px;">
+    {% for local in locais %}
+    <div class="local">
+        <a href="{% url 'detalhes' local.id %}">
+            <div style="
+            display: flex;
+            justify-content: center;
+        ">
+                <img class="img-top" style="width: 230px; height: 230px;" class="img-product" src="/media/{{ local.imagem }}" alt="">
+            </div>
+            <hr>
+            <div class="text-down">
+                <h3 class="local-title">{{ local.nome_local }}</h3>
+                <p class="cidade">{{ local.cidade }}-{{ local.uf }}</p>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+    
+
+</section>
+{% endblock %}
