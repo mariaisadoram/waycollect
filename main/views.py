@@ -50,8 +50,9 @@ def cadastro_ponto(request):
 @login_required
 def editar_local(request, id):
     local= get_object_or_404(Local, id=id)
+    print(local)
     form = LocalForm(request.POST or None, instance=local)
-    print(form)
+    
     if form.is_valid():
         print("oi")
         form.save()
