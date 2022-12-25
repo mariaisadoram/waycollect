@@ -41,22 +41,24 @@ def cadastro_ponto(request):
         if form.is_valid():
             form.save()
             form = LocalForm()
-            # return redirect('pontos')
+            return redirect('pontos')
     else:
         form = LocalForm()
     
     return render(request, 'forms.html', { 'form' : form })
 
-@login_required(login_url='/login')
+@login_required
 def editar_local(request, id):
     local= get_object_or_404(Local, id=id)
     form = LocalForm(request.POST or None, instance=local)
+    print(form)
     if form.is_valid():
         print("oi")
         form.save()
         sweetify.sweetalert(request,'Ponto alterado com sucesso!')
         return redirect('meus_pontos')
     
+    print("eh isso")
     return render(request, "forms.html", {'form':form})
 
 @login_required
