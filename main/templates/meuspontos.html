@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+Meus Pontos
+{% block head %}
+{% endblock %}
+
+{% block nav %}
+
+<li class="nav-item ">
+    <a class="nav-link" href="{% url 'index' %}">Página Inicial</a>
+</li>
+<li class="nav-item ">
+    <a class="nav-link" href="{% url 'pontos' %}">Pontos de coleta</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'sobre' %}">Sobre Nós</a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'meus_pontos' %}">Meus pontos</a>
+</li>
+
+{% endblock %}
+
+{% block h2 %}
+Mais detalhes
+{% endblock %}
+
+{% block main %}
+<div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome do ponto</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">Responsável</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                <th scope="row">2</th>
+                <td>Rede Oeste Supermercados</td>
+                <td>Jose Carlos da fonseca, 121, são benedito, alexandria-RN</td>
+                <td>Luis Oliveira de Andrade e Silva</td>
+                <td>
+                    <a href="" class="btn btn-primary">Editar</a>
+                    <a href="" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+            
+            
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -20,6 +20,9 @@ Adicionar um novo ponto
 <li class="nav-item">
     <a class="nav-link" href="{% url 'sobre' %}">Sobre Nós</a>
 </li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'meus_pontos' %}">Meus pontos</a>
+</li>
 
 {% endblock %}
 
@@ -29,13 +32,79 @@ Adicionar novo ponto
 
 {% block main %}
 
-<form method="POST" action="" class="container form-c">
+<form method="POST" action="{% url 'cadastro_ponto' %}" class="container form-c" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <div class="div-bt">
+    <!-- {{ form.as_p }} -->
+    <!-- <div class="div-bt">
         <button class="bt" type="submit">Adicionar</button>
+    </div> -->
+    <div class="row">
+        <div class="col">
+            {{ form.nome_local }}
+
+        </div>
     </div>
-    
+    <br>
+    <div class="row">
+        <div class="col-6">
+            {{ form.cidade }}
+        </div>
+        <div class="col">
+            {{ form.uf }}
+        </div>
+        <div class="col">
+            {{ form.cep }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            {{ form.rua }}
+        </div>
+        <div class="col">
+            {{ form.num_residencial }}
+        </div>
+        <div class="col">
+            {{ form.bairro }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-7">
+            {{ form.email }}
+        </div>
+        <div class="col">
+            {{ form.fone }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-7">
+            {{ form.nome_responsavel }}
+        </div>
+        <div class="col">
+            {{ form.cpf_responsavel }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <!-- <label for="exampleFormControlTextarea1">Example textarea</label> -->
+        <div class="col">
+            {{ form.disponibilidade }}
+        </div>
+
+    </div>
+    <br>
+    <div class="row" style="display: flex; align-items: flex-end;">
+        <div class="col">
+            <label for="exampleFormControlFile1">Escolha uma foto do seu ponto</label>
+            {{ form.imagem }}
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">Adicionar</button>
+        </div>
+    </div>
+
 </form>
 
 {% endblock %}

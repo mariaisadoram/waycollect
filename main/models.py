@@ -20,8 +20,8 @@ class Local(models.Model):
     nome_responsavel = models.CharField(max_length=150)
     cpf_responsavel = models.CharField(max_length=150)
     disponibilidade = models.TextField(max_length=800)
-    senha = models.CharField(max_length=100)
-    imagem=models.ImageField(upload_to='pontos/',blank=True,null=True,max_length=250)
+    # senha = models.CharField(max_length=100)
+    imagem=models.ImageField(upload_to='pontos/',blank=True,null=True)
 
     def __str__(self) -> str:
         return self.nome_local
