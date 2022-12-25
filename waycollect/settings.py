@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+import sweetify
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sweetify',
     'crispy_forms',
     'main',
 ]
@@ -71,6 +73,8 @@ TEMPLATES = [
         },
     },
 ]
+
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 WSGI_APPLICATION = 'waycollect.wsgi.application'
 
@@ -131,3 +135,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+sweetify.DEFAULT_OPTS = {
+    'showConfirmButton': False,
+    'timer': 1000,
+    'allowOutsideClick': True,
+    'confirmButtonText': 'OK',
+    "icon": "success",
+    'buttons': False,
+    'closeModal': False,
+    'text': " ",
+    'customClass': {
+        'popup': 'animated tada',
+        
+    }
+}

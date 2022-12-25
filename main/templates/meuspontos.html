@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
+{% load sweetify %}
+
 
 {% block title %}
 {% endblock %}
@@ -41,19 +43,19 @@ Mais detalhes
             </tr>
         </thead>
         <tbody>
-            
+            {% for local in locais %}
             <tr>
                 
-                <th scope="row">2</th>
-                <td>Rede Oeste Supermercados</td>
-                <td>Jose Carlos da fonseca, 121, são benedito, alexandria-RN</td>
-                <td>Luis Oliveira de Andrade e Silva</td>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ local.nome_local }}</td>
+                <td>{{ local.rua }}, {{ local.num_residencial }}, {{ local.bairro }}, {{ local.cidade }}-{{ local.uf }}</td>
+                <td>{{ local.nome_responsavel }}</td>
                 <td>
-                    <a href="" class="btn btn-primary">Editar</a>
-                    <a href="" class="btn btn-danger">Excluir</a>
+                    <a href="{% url 'editar' local.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'remover' local.id %}" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
-            
+            {% endfor %}
             
         </tbody>
     </table>

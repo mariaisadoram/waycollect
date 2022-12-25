@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from main.models import *
 from main.forms import LocalForm
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as sigin
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+import sweetify
 
 # Create your views here.
 
@@ -13,7 +14,10 @@ def index(request):
 
 @login_required(login_url='/login')
 def meus_pontos(request):
-    return render(request, "meuspontos.html")
+    lista = Local.objects.all() #Local (class do models.py)
+    print(lista)
+    context={'locais' : lista }
+    return render(request,'meuspontos.html',context)
 
 def sobre(request):
     return render(request, 'sobre.html')
@@ -29,7 +33,7 @@ def detalhes(request, id):
     context = {'local' : local}
     return render(request,'detalhes.html',context)
 
-
+@login_required(login_url='/login')
 def cadastro_ponto(request):
     print(request.method)
     if request.method == 'POST':
@@ -37,10 +41,30 @@ def cadastro_ponto(request):
         if form.is_valid():
             form.save()
             form = LocalForm()
+            # return redirect('pontos')
     else:
         form = LocalForm()
     
     return render(request, 'forms.html', { 'form' : form })
+
+@login_required(login_url='/login')
+def editar_local(request, id):
+    local= get_object_or_404(Local, id=id)
+    form = LocalForm(request.POST or None, instance=local)
+    if form.is_valid():
+        print("oi")
+        form.save()
+        sweetify.sweetalert(request,'Ponto alterado com sucesso!')
+        return redirect('meus_pontos')
+    
+    return render(request, "forms.html", {'form':form})
+
+@login_required
+def remover_local(request, id):
+    local= get_object_or_404(Local, id=id)
+    local.delete()
+    sweetify.sweetalert(request,'Ponto excluído com sucesso!')
+    return redirect('meus_pontos')
 
 def cadastro_user(request):
     if request.method == 'POST':
@@ -66,7 +90,7 @@ def login(request):
         if user: 
             sigin(request,user)
             print("deu certo")
-            return redirect('/index')
+            return redirect('/')
         else:
             print("deu errado")
             return redirect('/login')
