@@ -45,10 +45,11 @@ Mais detalhes
         <tbody>
             {% for local in locais %}
             <tr>
-                
+
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{ local.nome_local }}</td>
-                <td>{{ local.rua }}, {{ local.num_residencial }}, {{ local.bairro }}, {{ local.cidade }}-{{ local.uf }}</td>
+                <td>{{ local.rua }}, {{ local.num_residencial }}, {{ local.bairro }}, {{ local.cidade }}-{{ local.uf }}
+                </td>
                 <td>{{ local.nome_responsavel }}</td>
                 <td>
                     <a href="{% url 'editar' local.id %}" class="btn btn-primary">Editar</a>
@@ -56,7 +57,7 @@ Mais detalhes
                 </td>
             </tr>
             {% endfor %}
-            
+
         </tbody>
     </table>
 </div>

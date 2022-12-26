@@ -6,6 +6,8 @@ from django.contrib.auth import login as sigin
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 import sweetify
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -49,19 +51,32 @@ def cadastro_ponto(request):
 
 @login_required
 def editar_local(request, id):
-    local= get_object_or_404(Local, id=id)
-    print(local)
+    local = Local.objects.get(id=id)
     form = LocalForm(request.POST or None, request.FILES or None, instance=local)
-    if request.method == 'POST':
-        form = LocalForm(request.POST,request.FILES,instance=local)
+
+    if request.POST: 
         if form.is_valid():
-            print("oi")
-            form.save()
-            sweetify.sweetalert(request,'Ponto alterado com sucesso!')
-            return redirect('meus_pontos')
+            try: 
+                form.save()
+                messages.success(request, "This is a message!")
+                # sweetify.sweetalert(request,'Ponto alterado com sucesso!')
+                return redirect('editar')
+            except:
+                pass
+
+    return render(request, 'forms-edit.html', {'local': local, 'form': form})
+
+
+    # local= get_object_or_404(Local, id=id)
+    # form = LocalForm(request.POST or None, request.FILES or None, instance=local)
+    # if request.method == 'POST':
+    #     form = LocalForm(request.POST,request.FILES,instance=local)
+    #     if form.is_valid():
+    #         form.save()
+    #         sweetify.sweetalert(request,'Ponto alterado com sucesso!')
+    #         return redirect('/meus_pontos')
     
-    print("eh isso")
-    return render(request, "forms.html", {'form':form})
+    # return render(request, "forms-edit.html", {'form':form})
 
 @login_required
 def remover_local(request, id):

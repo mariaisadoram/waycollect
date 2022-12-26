@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+{% load sweetify %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Adicionar um novo ponto
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block nav %}
+
+<li class="nav-item ">
+    <a class="nav-link" href="{% url 'index' %}">Página Inicial</a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'pontos' %}">Pontos de coleta</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'sobre' %}">Sobre Nós</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'meus_pontos' %}">Meus pontos</a>
+</li>
+
+{% endblock %}
+
+{% block h2 %}
+Adicionar novo ponto
+{% endblock %}
+
+
+{% block main %}
+
+<form method="POST" action="{% url 'editar' local.id%}" class="container form-c" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- {{ form.as_p }} -->
+    <!-- <div class="div-bt">
+        <button class="bt" type="submit">Adicionar</button>
+    </div> -->
+
+    {% if messages %}
+    {% for message in messages %}
+    <h1{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h1>
+        {% endfor %}
+{% endif %}
+
+    <div class="row">
+        <div class="col">
+            {{ form.nome_local }}
+
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            {{ form.cidade }}
+        </div>
+        <div class="col">
+            {{ form.uf }}
+        </div>
+        <div class="col">
+            {{ form.cep }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            {{ form.rua }}
+        </div>
+        <div class="col">
+            {{ form.num_residencial }}
+        </div>
+        <div class="col">
+            {{ form.bairro }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-7">
+            {{ form.email }}
+        </div>
+        <div class="col">
+            {{ form.fone }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-7">
+            {{ form.nome_responsavel }}
+        </div>
+        <div class="col">
+            {{ form.cpf_responsavel }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <!-- <label for="exampleFormControlTextarea1">Example textarea</label> -->
+        <div class="col">
+            {{ form.disponibilidade }}
+        </div>
+
+    </div>
+    <br>
+    <div class="row" style="display: flex; align-items: flex-end;">
+        <div class="col">
+            <label for="exampleFormControlFile1">Escolha uma foto do seu ponto</label>
+            {{ form.imagem.value }}
+            {{ form.imagem }}
+
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary mb-2">Atualizar</button>
+        </div>
+    </div>
+
+</form>
+{% endblock %}
