@@ -19,9 +19,11 @@ Sobre nós
 <li class="nav-item active">
     <a class="nav-link" href="{% url 'sobre' %}">Sobre Nós</a>
 </li>
+{% if user.is_authenticated %}
 <li class="nav-item">
     <a class="nav-link" href="{% url 'meus_pontos' %}">Meus pontos</a>
 </li>
+{% endif %}
 
 {% endblock %}
 

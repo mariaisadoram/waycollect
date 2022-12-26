@@ -15,15 +15,17 @@ Atualizar ponto
 <li class="nav-item ">
     <a class="nav-link" href="{% url 'index' %}">Página Inicial</a>
 </li>
-<li class="nav-item active">
+<li class="nav-item">
     <a class="nav-link" href="{% url 'pontos' %}">Pontos de coleta</a>
 </li>
 <li class="nav-item">
     <a class="nav-link" href="{% url 'sobre' %}">Sobre Nós</a>
 </li>
-<li class="nav-item">
+{% if user.is_authenticated %}
+<li class="nav-item active">
     <a class="nav-link" href="{% url 'meus_pontos' %}">Meus pontos</a>
 </li>
+{% endif %}
 
 {% endblock %}
 
