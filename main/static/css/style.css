@@ -225,3 +225,43 @@ h2{
 .navbar-toggler{
     border-color: #28a745;;
 }
+
+/* style sobrenos */
+
+
+.sobrenos{
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+}
+.nossa-equipe{
+    border-radius: 20px;
+}
+.title-sobrenos{
+    color: #018033;
+    display: flex;
+    justify-content: center;
+}
+.text-sobrenos{
+    display: flex;
+    align-items: center;
+}
+.text-sobrenos > div > p{
+    padding: 15px;
+}
+
+.img-equipe{
+    border-radius: 100px;
+    width: 160px;
+
+}
+
+.div-img-equipe{
+    display: flex;
+    justify-content: center;
+}
+
+.img-way{
+    display: flex;
+    justify-content: center;
+}
