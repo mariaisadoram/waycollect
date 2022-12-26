@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 import sweetify
 from django.contrib import messages
 
-
 # Create your views here.
 
 def index(request):
@@ -58,7 +57,7 @@ def editar_local(request, id):
         if form.is_valid():
             try: 
                 form.save()
-                messages.success(request, "This is a message!")
+                messages.success(request, 'Ponto alterado!')
                 # sweetify.sweetalert(request,'Ponto alterado com sucesso!')
                 return redirect('editar')
             except:
@@ -82,6 +81,7 @@ def editar_local(request, id):
 def remover_local(request, id):
     local= get_object_or_404(Local, id=id)
     local.delete()
+    messages.success(request, "Ponto removido!")
     sweetify.sweetalert(request,'Ponto excluído com sucesso!')
     return redirect('meus_pontos')
 

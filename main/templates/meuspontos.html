@@ -4,8 +4,9 @@
 
 
 {% block title %}
-{% endblock %}
 Meus Pontos
+{% endblock %}
+
 {% block head %}
 {% endblock %}
 
@@ -32,6 +33,11 @@ Mais detalhes
 
 {% block main %}
 <div>
+    {% if messages %}
+    {% for message in messages %}
+    <h1 style="font-size: 20px; color: #2fb54db8; margin-bottom: 10px;" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h1>
+        {% endfor %}
+    {% endif %}
     <table class="table">
         <thead class="thead-dark">
             <tr>

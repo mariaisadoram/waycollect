@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-Adicionar um novo ponto
+Atualizar ponto
 {% endblock %}
 
 {% block head %}
@@ -28,7 +28,7 @@ Adicionar um novo ponto
 {% endblock %}
 
 {% block h2 %}
-Adicionar novo ponto
+Atualizar ponto
 {% endblock %}
 
 
@@ -43,14 +43,14 @@ Adicionar novo ponto
 
     {% if messages %}
     {% for message in messages %}
-    <h1{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h1>
+    <h1 style="font-size: 20px; color: #2fb54db8; margin-bottom: 10px;" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</h1>
         {% endfor %}
-{% endif %}
+    {% endif %}
+
 
     <div class="row">
         <div class="col">
             {{ form.nome_local }}
-
         </div>
     </div>
     <br>
