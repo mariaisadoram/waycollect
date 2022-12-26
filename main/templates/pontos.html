@@ -30,7 +30,7 @@ Pontos de coleta
 {% endblock %}
 
 {% block main %}
-
+{% if user.is_authenticated %}
 <div>
     <a href="{% url 'cadastro_ponto' %}">
         <p style="   
@@ -42,7 +42,7 @@ Pontos de coleta
         </p>
     </a>
 </div>
-
+{% endif %}
 <section class="container locals" style="padding-top: 40px;">
     {% for local in locais %}
     <div class="local">
