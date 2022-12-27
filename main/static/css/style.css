@@ -223,7 +223,7 @@ h2{
 }
 
 .navbar-toggler{
-    border-color: #28a745;;
+    border-color: #28a745;
 }
 
 /* style sobrenos */
@@ -264,4 +264,17 @@ h2{
 .img-way{
     display: flex;
     justify-content: center;
+}
+
+.lik:hover{
+    color: rgb(143, 143, 143);
+    text-decoration: underline;
+}
+
+.block-not{
+    border: 0.5px solid  rgb(143, 143, 143);
+}
+
+.not-title{
+    width: 260px;
 }
